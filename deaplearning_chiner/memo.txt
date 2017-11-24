@@ -1,0 +1,14 @@
+deeplearning with chainer
+
+ch5.CNN
+受容野を数える
+
+ch6.画像認識(セグメンテーション)
+evaluate.py
+image_nomalizer.py
+test.py
+color2class.py
+fcn_squeeze.py
+mini_batch_loader.py
+train.py
+
