@@ -1,3 +1,3 @@
 # books
-##deeplearning<br>
+## deeplearning<br>
 https://github.com/ghmagazine/chainerbook
