@@ -3,7 +3,16 @@
 using namespace std;
 
 /*隣同士を比較して並び替えるアルゴリズム。O(N^2)*/
-int* bubbleSort_ascend(int *N, int len){
+
+void show_data(int N[], int len){
+
+  for(int i=0; i<len; i++){
+    cout << N[i] << " ";
+  }
+  cout << endl;
+}
+
+void bubbleSort_ascend(int *N, int len){
   int i,j,tmp;
   for (i=0;i<len;i++){
     for(j=len-1; j>i;j--){
@@ -12,12 +21,12 @@ int* bubbleSort_ascend(int *N, int len){
 	  N[j] = N[j-1];
 	  N[j-1] = tmp;
 	}
-      }
+	show_data(N,len);
     }
-  return N;
+  }
 }
 
-int* bubbleSort_decend(int *N, int len){
+void bubbleSort_decend(int *N, int len){
   int i,j,tmp;
   for (i=0;i<len;i++){
     for(j=len-1; j>i;j--){
@@ -26,20 +35,16 @@ int* bubbleSort_decend(int *N, int len){
 	  N[j] = N[j-1];
 	  N[j-1] = tmp;
 	}
+	show_data(N,len);
       }
     }
-  return N;
 }
-
 
 int main(){
   int N[5] = {6,2,3,4,5};
   int len = 5;
-  int *ans = bubbleSort_ascend(N,len);
+  bubbleSort_ascend(N,len);
+  show_data(N,len);
 
-  for(int i=0; i<len; i++){
-    cout << ans[i] << " ";
-  }
-  cout<<endl;
-
+  return 0;
 }
