@@ -1,12 +1,12 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
 /*要素を分割して、insert sortを行う。*/
 
-void show_data(int N[], int len){
-
-  for(int i=0; i<len; i++){
+void show_data(vector<int> N){
+  for(int i=0; i<N.size(); i++){
     cout << N[i] << " ";
   }
   cout << endl;
@@ -20,33 +20,36 @@ void swap(int *p1, int *p2){
 }  
 
 //挿入ソート
-void insertSort(int N[], int gap, int len){
+vector<int> insertSort(vector<int> N, int gap){
   int i,j,tmp;
-
+  int len = N.size();
   for(i=gap; i<len; i++){
     for(j= i-gap; j>=0 ; j -=gap){
       if(N[j] <= N[j+gap]) break;
       else{
 	swap(&N[j],&N[j+gap]);
-	show_data(N,len);
+	show_data(N);
       }
     }
   }
+  return N;
 }
 
 //シェルソート
-void shellSort(int N[], int len){
+vector<int> shellSort(vector<int> N){
+  int len = N.size();
   int gap;
   for(gap = len/2; gap>0 ; gap/=2){
-    insertSort(N,gap,len);
+    N = insertSort(N,gap);
   }
+  return N;
 }
 
 int main(){
 
-  int N[] = {5,10,6,9,1,3,2,11};
-  int len = 8;
-  shellSort(N,len);
-  show_data(N,len);
+  vector<int> N {5,10,6,9,1,3,2,11};
+  int len = N.size();
+  N = shellSort(N);
+  show_data(N);
   return 0;
 }
