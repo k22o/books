@@ -4,7 +4,5 @@
 - ハッシュ探索(bash-based search) ... ハッシュ関数を利用する。平均O(1)
 - 二分探索木(binary search tree) ... 二分探索木を用いる。
 - ブルームフィルタ(bloom filter)
-- 反復深化深さ優先探索(deepening depth-first search)
-- 深さ制限探索(deep-limited search)
 - 均一コスト探索(uniform-cost search)
 - 双方向探索(bidirectional search)
