@@ -7,7 +7,6 @@
 
 ## 最短経路問題
 - ダイクストラ法(Dijkstra's algorithm)
-- 密グラフ用ダイクストラ法(Dijkstra's algorithm for dense graphs)
 - ベルマン-フォード法(Bellman-Ford)
 
 ## 全対最短経路問題
