@@ -12,12 +12,12 @@ class Graph:
     　　　　　白…未訪問　灰色…訪問済み・未訪問隣接点あり　黒...完全終了
     pred ...1つ前の隣接点のストック
     '''
-    def __init__(self,node_num,node_matrix,color,pred,dist):
+    def __init__(self,node_num):
         self.node_num = node_num
-        self.node_matrix = node_matrix
-        self.color = color
-        self.pred = pred
-        self.dist = dist
+        self.node_matrix = np.zeros((node_num,node_num))
+        self.color = np.ones((node_num))
+        self.pred  = np.ones((node_num))*(-1)
+        self.dist = np.ones((node_num))*1000
         
     def add_node(self,a,b,direction=1,w=1):
         '''
@@ -38,17 +38,6 @@ class Graph:
             self.color[int(node)] = 3
         
 
-def sss_init(node_num):
-
-    node_matrix = np.zeros((node_num,node_num))
-    color = np.ones((node_num))
-    pred  = np.ones((node_num))*(-1)
-    dist = np.ones((node_num))*1000
-    graph = Graph(node_num,node_matrix,color,pred,dist)
-    
-    return graph
-
-
 def singleSourceShortest(graph,start):
 
     graph.dist[start] = 0
@@ -60,13 +49,13 @@ def singleSourceShortest(graph,start):
                     if newlen < graph.dist[j] and k== graph.node_num-1:
                         graph.dist[j] = newlen
                         graph.pred[j] = i
-                        print("{} {}".format(graph.dist[j],graph.dist[j]))
+                        print("{}".format(graph.dist[j]))
                         
         
 if __name__ == "__main__":
 
     node_num = 6
-    graph = sss_init(node_num)
+    graph = Graph(node_num)
     
     graph.add_node(0,1,1,6)
     graph.add_node(0,2,1,8)

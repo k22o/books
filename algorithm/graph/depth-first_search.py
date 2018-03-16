@@ -13,11 +13,12 @@ class Graph:
     pred ...1つ前の隣接点のストック
     '''
     
-    def __init__(self,node_num,node_matrix,color,pred):
+    def __init__(self,node_num):
         self.node_num = node_num
-        self.node_matrix = node_matrix
-        self.color = color
-        self.pred = pred
+        self.node_matrix = np.zeros((node_num,node_num))
+        self.color = np.ones((node_num))
+        self.pred  = np.ones((node_num))*(-1)
+
         
     def add_node(self,a,b,direction=1,w=1):
         '''
@@ -38,16 +39,6 @@ class Graph:
             self.color[node] = 3
         
 
-def dfs_init(node_num):
-
-    node_matrix = np.zeros((node_num,node_num))
-    color = np.ones((node_num))
-    pred  = np.ones((node_num))*(-1)
-    graph = Graph(node_num,node_matrix,color,pred)
- 
-    return graph
-
-
 def dfsVisit(graph,node):
     graph.change_color(node,"GRAY")#nodeの色をGRAYに
     for i in range (graph.node_num):
@@ -64,7 +55,7 @@ def dfsVisit(graph,node):
 if __name__ == "__main__":
 
     node_num = 9
-    graph = dfs_init(node_num)
+    graph = Graph(node_num)
     
     graph.add_node(0,1,2)
     graph.add_node(0,4,2)

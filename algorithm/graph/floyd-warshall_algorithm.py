@@ -1,8 +1,7 @@
 #-*- coding :utf-8 -*-
-#幅優先探索
+#フロイド-ワーシャル法
 
 import numpy as np
-import queue
 
 #グラフを作成および探索するためのクラス
 class Graph:
@@ -13,14 +12,13 @@ class Graph:
     　　　　　白…未訪問　灰色…訪問済み・未訪問隣接点あり　黒...完全終了
     pred ...1つ前の隣接点のストック
     '''
-    
     def __init__(self,node_num):
         self.node_num = node_num
         self.node_matrix = np.zeros((node_num,node_num))
         self.color = np.ones((node_num))
-        self.pred  = np.ones((node_num))*(-1)
-        self.dist = np.ones((node_num))*1000
-
+        self.pred  = np.ones((node_num,node_num))*(-1)
+        self.dist = np.ones((node_num,node_num))*1000
+        self.path_list = np.array([])
 
         
     def add_node(self,a,b,direction=1,w=1):
@@ -42,45 +40,43 @@ class Graph:
             self.color[int(node)] = 3
         
 
-def bfs(graph,start):
+#実装
+def allPairsShortestPath(graph):
 
-    #startの初期設定
-    graph.change_color(start,"GRAY")
-    graph.dist[start] = 0
-
-    #queueの設定
-    Q = queue.Queue()#queueの初期化
-    Q.put(start)#startをqueueに入れる(enqueue)
+    way = []
     
-    while not Q.empty():#queueが空になるまで
+    for i in range(graph.node_num):
+        graph.dist[i][i] = 0
 
-        u = Q.get()#queueの先頭(First In)を取得(dequeue)
-        
+    for i in range(graph.node_num):
+        for j in range(graph.node_num):
+            if graph.node_matrix[i][j] != 0:
+                graph.dist[i][j] = graph.node_matrix[i][j]
+                graph.pred[i][j] = i
+
+    for k in range(graph.node_num):
         for i in range(graph.node_num):
-            #道があって未訪問だったら
-            if graph.node_matrix[u][i] != 0 and graph.color[i] == 1:
-                graph.dist[i] = graph.dist[u] + graph.node_matrix[u][i]
-                graph.pred[i] = u
-                graph.change_color(i,"GRAY")
-                Q.put(i)
-        graph.change_color(u,"BLACK")
-        print(graph.color)
+            for j in range(graph.node_num):
+                newlen = graph.dist[i][k] + graph.dist[k][j]
+                if newlen < graph.dist[i][j]:
+                    graph.dist[i][j] = newlen
+                    graph.pred[i][j] = graph.pred[k][j]
+                    print (graph.dist)
+                    print (graph.pred)
 
-        
+                    
+                    
 if __name__ == "__main__":
 
-    node_num = 9
+    node_num = 5
     graph = Graph(node_num)
     
-    graph.add_node(0,1,2)
-    graph.add_node(0,4,2)
-    graph.add_node(1,2,2)
-    graph.add_node(2,6,2)
-    graph.add_node(2,3,2)
-    graph.add_node(3,4,2)
-    graph.add_node(4,5,2)
-    graph.add_node(7,8,2)
+    graph.add_node(0,1,1,2)
+    graph.add_node(1,2,1,3)
+    graph.add_node(0,4,1,4)
+    graph.add_node(2,4,1,1)
+    graph.add_node(4,3,1,7)
+    graph.add_node(2,3,1,5)
+    graph.add_node(3,0,1,8)
     
-    print (graph.color)
-    
-    bfs(graph,0)#start地点(0)から探索開始
+    allPairsShortestPath(graph)
