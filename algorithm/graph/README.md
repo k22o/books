@@ -6,12 +6,15 @@
 - 深さ制限探索(deep-limited search)  
 
 ## 最短経路問題
+スタートからターゲットまで最短で進む経路
 - ダイクストラ法(Dijkstra's algorithm)
 - ベルマン-フォード法(Bellman-Ford)
 
 ## 全対最短経路問題
+ある地点からある地点までの最小距離
 - フロイド-ワーシャル法(Floyd-Warshall)
 
 ## 最小全域木
+すべての地点をカバーするために必要なグラフの箇所
 - プリム法(Prim's algorithm)
 - クラスカル法
