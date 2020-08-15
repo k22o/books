@@ -9,3 +9,6 @@ http://www1.cts.ne.jp/~clab/hsample/Sort/Sort8.html
 
 ## fundamentals_deep_learning<br>
 https://www.amazon.co.jp/dp/B0728KKXWB/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1
+
+## reinforcement_learning
+森村哲郎「強化学習」などを参考
