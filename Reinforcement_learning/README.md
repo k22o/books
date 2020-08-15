@@ -1,7 +1,3 @@
-※　メモ
-あとニューラル系を終わらせて終了にしましょう
-
-
 # Reinforcement learning 
 - basic_algo_model_known
     - モデルが既知の場合の学習
@@ -16,7 +12,6 @@
     - Actor-ctiric, SARSA,Q学習，(TD誤差学習)
     - 純粋なTD法は自分で方策を定める必要があるので，今回はなしです。
 
-未実装
 - model_unknown_estimation
     - バッチ型
         - (s,a,s_next,r)は分かっても遷移確率や報酬関数が不明な場合
@@ -29,10 +24,9 @@
     - オンライン型
         - Rmax法
 
-
-近似Q学習のみ実装
 - functional_approximation
-    - 関数近似手法(NN除く)
+    - 近似Q学習と方策勾配法を実装
+    - 関数近似手法
     - 自分で適切な近似関数を設定する必要がある
     - 価値関数の近似
         - table拡張
@@ -47,7 +41,7 @@
 
 - neural RL
     - ニューラルネットを利用した関数近似手法
-    - 離散テーブルはメモリを食いすぎるので，関数りを利用して削減する
+    - 離散テーブルはメモリを食いすぎるので，関数を利用して削減する
 
 - inverse_RL
     - 逆強化学習
@@ -56,11 +50,10 @@
 
     
 - sample_cartpole.py
-- markov_decision_process.py
 
 
 参考サイト他
-https://www.kumilog.net/entry/openai-gym-rl
-http://neuro-educator.com/rl1/
-https://www.kumilog.net/entry/openai-gym-rl
-https://github.com/icoxfog417/baby-steps-of-rl-ja/blob/master/DP/environment.py
+https://www.kumilog.net/entry/openai-gym-rl<br>
+http://neuro-educator.com/rl1/<br>
+https://www.kumilog.net/entry/openai-gym-rl<br>
+https://github.com/icoxfog417/baby-steps-of-rl-ja/blob/master/DP/environment.py<br>
